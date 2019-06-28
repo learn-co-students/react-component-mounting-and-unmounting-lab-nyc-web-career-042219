@@ -1,4 +1,5 @@
 import React from "react";
+import { timingSafeEqual } from "crypto";
 
 class Pancake extends React.Component {
   constructor(props) {
@@ -11,10 +12,17 @@ class Pancake extends React.Component {
   }
 
   // TODO: create a componentDidMount() which will start the interval to count how long the pancake has been cooking
+  componentDidMount() {
+    this.startInterval()
+  }
 
   // TODO: create a componentWillUnmount() which will clear the interval
+  componentWillUnmount() {
+    this.cleanUpInterval()
+  }
 
   updateCounter = () => {
+    console.log('sup')
     this.setState({
       timeCooked: this.state.timeCooked + 1
     });
